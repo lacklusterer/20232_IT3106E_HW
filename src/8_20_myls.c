@@ -1,11 +1,11 @@
+#include <stdio.h>
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-    char *envp[] = { NULL };
+	extern char **environ;
 
-    execve("/bin/ls", argv, envp);
+  execve("/bin/ls", argv, environ);
 
-    // If execve returns, it means an error occurred
-    perror("execve");
-    return 1;
+  perror("execve");
+  return 1;
 }
